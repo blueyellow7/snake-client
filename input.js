@@ -1,3 +1,5 @@
+const { MOVE_KEYS, MESSAGES } = require('./constants');
+
 let connection;
 
 const setupInput = function (conn) {
@@ -15,42 +17,15 @@ const handleUserInput = function (key) {
     process.exit();
   }
 
-  if (key === 'w') {
-    keyCommand = 'Move: up';
-    connection.write(keyCommand);
+  const moveKeysArray = ['w', 'a', 's', 'd'];
+  if (moveKeysArray.includes(key)) {
+    connection.write(MOVE_KEYS[key]);
   }
 
-  if (key === 'a') {
-    keyCommand = 'Move: left';
-    connection.write(keyCommand);
+  const messageKeysArray = ['1', '2', '3', '4'];
+  if (messageKeysArray.includes(key)) {
+    connection.write(MESSAGES[key]);
   }
-
-  if (key === 's') {
-    keyCommand = 'Move: down';
-    connection.write(keyCommand);
-  }
-
-  if (key === 'd') {
-    keyCommand = 'Move: right';
-    connection.write(keyCommand);
-  }
-
-  if (key === '1') {
-    connection.write('Say: for goodness snake!');
-  }
-
-  if (key === '2') {
-    connection.write('Say: thats hissterical!');
-  }
-
-  if (key === '3') {
-    connection.write('Say: /slithers away/');
-  }
-
-  if (key === '4') {
-    connection.write('Say: :)))');
-  }
-
 };
 
 module.exports = { setupInput };
