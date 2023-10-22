@@ -1,3 +1,5 @@
+// file of constant variables that other files in snake-client will use
+
 const IP = '192.168.2.32';
 const PORT = 50541;
 const MOVE_KEYS = {

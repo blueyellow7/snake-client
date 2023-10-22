@@ -1,5 +1,8 @@
 const { MOVE_KEYS, MESSAGES } = require('./constants');
 
+// connect function from client.js returns 'conn' object which establishes connection with server.
+// pass 'conn' to setUpInput and set as variable called 'connection'.
+// make connection into a global variable.
 let connection;
 
 const setupInput = function (conn) {
@@ -13,6 +16,7 @@ const setupInput = function (conn) {
 };
 
 const handleUserInput = function (key) {
+  // allow for exiting the game (\u0003 = ctrl + c)
   if (key === '\u0003') {
     process.exit();
   }
